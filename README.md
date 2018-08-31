@@ -14,4 +14,9 @@
 
 
 <br>效果<br>
-![](https://github.com/luckyxiangfeng?raw=true)
+![](https://github.com/luckyxiangfeng/ZMCommentView/blob/master/ZMCommentView/ZMCommentView/Photo/photo_1.png)
+
+![](https://github.com/luckyxiangfeng/ZMCommentView/blob/master/ZMCommentView/ZMCommentView/Photo/photo_2.png)
+
+![](https://github.com/luckyxiangfeng/ZMCommentView/blob/master/ZMCommentView/ZMCommentView/Photo/photo_3.png)
+
