@@ -25,11 +25,7 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)showCommentView{
-//    [[ZMCusCommentManager shareManager] showCommentWithSourceId:nil];
-    NSString *appId = @"896528154";
-    NSString *str = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@?action=write-review",appId];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
-
+    [[ZMCusCommentManager shareManager] showCommentWithSourceId:nil];
 }
 
 
