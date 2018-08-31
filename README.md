@@ -7,6 +7,9 @@
 
 4、一句代码展示全部评论
 
+有什么问题，可以再issues告知我。
+
+
 使用方式：
 
  [[ZMCusCommentManager shareManager] showCommentWithSourceId:nil];
