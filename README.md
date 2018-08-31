@@ -15,8 +15,6 @@
 
 <br>效果<br>
 ![Alt text](https://github.com/luckyxiangfeng/ZMCommentView/blob/master/ZMCommentView/ZMCommentView/Photo/photo_1.png)
-
 ![Alt text](https://github.com/luckyxiangfeng/ZMCommentView/blob/master/ZMCommentView/ZMCommentView/Photo/photo_2.png)
-
 ![Alt text](https://github.com/luckyxiangfeng/ZMCommentView/blob/master/ZMCommentView/ZMCommentView/Photo/photo_3.png)
 
