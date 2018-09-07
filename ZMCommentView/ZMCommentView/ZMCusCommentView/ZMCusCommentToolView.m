@@ -108,6 +108,24 @@
         self.sendBtnBlock();
     }
 }
+- (void)resetView{
+    
+    [_sendBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(-9);
+        make.top.mas_equalTo(7);
+        make.width.mas_offset(40);
+        make.height.mas_offset(36);
+    }];
+    [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_offset(36);
+    }];
+    [self.contentBgView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_offset(36);
+    }];
+    self.sendBtn.userInteractionEnabled = NO;
+    [self.sendBtn setTitleColor:RGBA(204, 204, 204, 1) forState:UIControlStateNormal];
+    
+}
 #pragma mark - textviewDelegate
 
 - (void)textViewDidChange:(UITextView *)textView{

@@ -100,6 +100,11 @@
     if (self.historyFrame.size.height !=47) {
         self.toolView.frame = self.historyFrame;
     }
+    if (self.toolView.textView.text.length<=0) {
+        self.historyFrame = CGRectMake(0, 0, SCREEN_WIDTH, 47);
+        [self.toolView resetView];
+        self.toolView.frame = self.historyFrame;
+    }
 }
 - (void)hideCommentToolView{
     self.topMaskView.hidden = YES;

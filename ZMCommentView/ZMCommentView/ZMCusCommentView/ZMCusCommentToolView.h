@@ -14,4 +14,5 @@
 @property (nonatomic, strong) ZMPlaceholderTextView *textView;
 - (void)showTextView;
 - (void)hideTextView;
+- (void)resetView;
 @end

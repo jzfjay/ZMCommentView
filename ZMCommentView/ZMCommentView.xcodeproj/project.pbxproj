@@ -414,6 +414,7 @@
 				DEVELOPMENT_TEAM = U8B53UG8Q6;
 				GCC_PREFIX_HEADER = /work/ZMCommentView/ZMCommentView/Common/PrefixHeader.pch;
 				INFOPLIST_FILE = ZMCommentView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -433,6 +434,7 @@
 				DEVELOPMENT_TEAM = U8B53UG8Q6;
 				GCC_PREFIX_HEADER = /work/ZMCommentView/ZMCommentView/Common/PrefixHeader.pch;
 				INFOPLIST_FILE = ZMCommentView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
