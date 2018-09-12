@@ -18,7 +18,7 @@
 @property (nonatomic, strong) UIControl *topMaskView;
 @property (nonatomic, strong) NSString *historyText;
 @property (nonatomic, assign) CGRect historyFrame;
-
+@property (nonatomic, assign) BOOL isShowKeyboard;
 @end
 
 @implementation ZMCusCommentView
@@ -53,7 +53,11 @@
         };
         _commentListView.tapBtnBlock = ^{
             @strongify(self)
-            [self showCommentToolView];
+            if (!self.isShowKeyboard) {
+                NSLog(@"1111");
+                [self showCommentToolView];
+            }
+     
             
         };
         [self addSubview:_commentListView];
@@ -105,10 +109,12 @@
         [self.toolView resetView];
         self.toolView.frame = self.historyFrame;
     }
+    self.isShowKeyboard = YES;
 }
 - (void)hideCommentToolView{
     self.topMaskView.hidden = YES;
     self.toolView.hidden = YES;
+    self.isShowKeyboard = NO;
     [self.toolView hideTextView];
     [self addSubview:self.toolView];
 }

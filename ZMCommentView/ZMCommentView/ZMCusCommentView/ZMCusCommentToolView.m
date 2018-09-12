@@ -13,6 +13,7 @@
 @property (nonatomic, strong) UIImageView *headImageView;
 @property (nonatomic, strong) UIButton *sendBtn;
 @property (nonatomic, assign) CGFloat defaultHeight;
+@property (nonatomic, assign) BOOL isKeyBoardShow;
 @end
 
 @implementation ZMCusCommentToolView
@@ -96,8 +97,9 @@
     
 }
 - (void)showTextView{
-    
-    [self.textView becomeFirstResponder];
+    if (!self.isKeyBoardShow) {
+        [self.textView becomeFirstResponder];
+    }
 }
 - (void)hideTextView{
     [self.textView resignFirstResponder];
@@ -129,12 +131,14 @@
 #pragma mark - textviewDelegate
 
 - (void)textViewDidChange:(UITextView *)textView{
-    
 
     CGFloat width = CGRectGetWidth(textView.frame);
 //    CGFloat height = CGRectGetHeight(textView.frame);
     CGSize newSize = [textView sizeThatFits:CGSizeMake(width,MAXFLOAT)];
     CGFloat newHeight = newSize.height;
+    if (newHeight<36) {
+        newHeight = 36;
+    }
     if (newHeight>=76) {
         newHeight = 76;
     }
@@ -186,4 +190,13 @@
     return YES;
 }
  */
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    self.isKeyBoardShow = YES;
+}
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    self.isKeyBoardShow = NO;
+}
 @end
