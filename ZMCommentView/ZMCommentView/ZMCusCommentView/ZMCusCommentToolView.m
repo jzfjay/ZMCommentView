@@ -8,6 +8,8 @@
 
 #import "ZMCusCommentToolView.h"
 #import "UIView+Frame.h"
+#define MIN_TEXTVIEW_HEIGHT 36
+#define MAX_TEXTVIEW_HEIGHT 76
 @interface ZMCusCommentToolView()<UITextViewDelegate>
 @property (nonatomic, strong) UIView *contentBgView;
 @property (nonatomic, strong) UIImageView *headImageView;
@@ -54,12 +56,12 @@
         _contentBgView = [[UIView alloc] init];
         _contentBgView.backgroundColor = RGBA(241, 242, 244, 1);
         _contentBgView.layer.masksToBounds = YES;
-        _contentBgView.layer.cornerRadius = 36/2;
+        _contentBgView.layer.cornerRadius = MIN_TEXTVIEW_HEIGHT/2;
         [self addSubview:_contentBgView];
         [_contentBgView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(14);
             make.right.mas_equalTo(_sendBtn.mas_left).mas_offset(-13);
-            make.height.mas_offset(36);
+            make.height.mas_offset(MIN_TEXTVIEW_HEIGHT);
             make.top.mas_equalTo(7);
         }];
     }
@@ -89,7 +91,7 @@
             make.left.mas_equalTo(_headImageView.mas_right).mas_offset(3);
             make.top.mas_equalTo(0);
             make.right.mas_equalTo(-9);
-            make.height.mas_offset(36);
+            make.height.mas_offset(MIN_TEXTVIEW_HEIGHT);
         }];
     }
     
@@ -119,10 +121,10 @@
         make.height.mas_offset(36);
     }];
     [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_offset(36);
+        make.height.mas_offset(MIN_TEXTVIEW_HEIGHT);
     }];
     [self.contentBgView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_offset(36);
+        make.height.mas_offset(MIN_TEXTVIEW_HEIGHT);
     }];
     self.sendBtn.userInteractionEnabled = NO;
     [self.sendBtn setTitleColor:RGBA(204, 204, 204, 1) forState:UIControlStateNormal];
@@ -136,11 +138,11 @@
 //    CGFloat height = CGRectGetHeight(textView.frame);
     CGSize newSize = [textView sizeThatFits:CGSizeMake(width,MAXFLOAT)];
     CGFloat newHeight = newSize.height;
-    if (newHeight<36) {
-        newHeight = 36;
+    if (newHeight<MIN_TEXTVIEW_HEIGHT) {
+        newHeight = MIN_TEXTVIEW_HEIGHT;
     }
-    if (newHeight>=76) {
-        newHeight = 76;
+    if (newHeight>=MAX_TEXTVIEW_HEIGHT) {
+        newHeight = MAX_TEXTVIEW_HEIGHT;
     }
     self.height = newHeight+11;
     if (self.height>self.defaultHeight) {

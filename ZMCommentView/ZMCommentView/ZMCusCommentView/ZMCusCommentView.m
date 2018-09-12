@@ -54,7 +54,6 @@
         _commentListView.tapBtnBlock = ^{
             @strongify(self)
             if (!self.isShowKeyboard) {
-                NSLog(@"1111");
                 [self showCommentToolView];
             }
      
