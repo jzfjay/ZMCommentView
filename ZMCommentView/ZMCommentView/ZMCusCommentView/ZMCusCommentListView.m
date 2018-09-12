@@ -11,6 +11,7 @@
 #import "ZMCusCommentListTableHeaderView.h"
 #import "ZMCusCommentListContentCell.h"
 #import "ZMCusCommentListReplyContentCell.h"
+#import "ZMColorDefine.h"
 @interface ZMCusCommentListView()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) ZMCusCommentBottomView *bottomView;
 @property (nonatomic, strong) UITableView *tableView;
@@ -67,7 +68,7 @@
         [_tableView registerClass:[ZMCusCommentListReplyContentCell class] forCellReuseIdentifier:NSStringFromClass([ZMCusCommentListReplyContentCell class])];
         [self addSubview:_tableView];
         [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.mas_equalTo(UIEdgeInsetsMake(70,0, ZMCusComentBottomViewHeight+ZMCusCommentViewTopHeight, 0));
+            make.edges.mas_equalTo(UIEdgeInsetsMake(70,0, ZMCusComentBottomViewHeight+ZMCusCommentViewTopHeight+SAFE_AREA_BOTTOM, 0));
         }];
     }
     
@@ -83,7 +84,7 @@
         };
         [self addSubview:_bottomView];
         [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(-ZMCusCommentViewTopHeight);
+            make.bottom.mas_equalTo(-(ZMCusCommentViewTopHeight+SAFE_AREA_BOTTOM));
             make.left.and.right.mas_equalTo(0);
             make.height.mas_offset(ZMCusComentBottomViewHeight);
         }];

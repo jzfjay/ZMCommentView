@@ -11,6 +11,9 @@
 // Views
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
+//iPhone X底部边距
+#define STATUS_BAR_HIGHT CGRectGetHeight([UIApplication sharedApplication].statusBarFrame)
+#define SAFE_AREA_BOTTOM (STATUS_BAR_HIGHT > 20 ? 34.0 : 0.0)
 
 // block
 #define weakify(var) \
