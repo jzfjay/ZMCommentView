@@ -99,9 +99,9 @@
     
 }
 - (void)showTextView{
-    if (!self.isKeyBoardShow) {
-        [self.textView becomeFirstResponder];
-    }
+
+    [self.textView becomeFirstResponder];
+    
 }
 - (void)hideTextView{
     [self.textView resignFirstResponder];
