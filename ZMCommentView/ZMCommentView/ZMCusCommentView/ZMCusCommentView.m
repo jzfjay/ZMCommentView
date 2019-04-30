@@ -72,6 +72,9 @@
             
         }];
     }
+    UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipe:)];
+    [swipeGestureRecognizer setDirection:(UISwipeGestureRecognizerDirectionDown)];
+    [self addGestureRecognizer:swipeGestureRecognizer];
 
 
 }
@@ -141,6 +144,17 @@
     }];
 }
 
+- (void)handleSwipe:(UISwipeGestureRecognizer *)recognizer{
+    if(recognizer.direction == UISwipeGestureRecognizerDirectionDown) {
+        NSLog(@"swipe down");
+        [self hideView];
+    }
+    if(recognizer.direction == UISwipeGestureRecognizerDirectionUp) {
+        NSLog(@"swipe up");
+        
+    }
+
+}
 @end
 
 @implementation ZMCusCommentManager
