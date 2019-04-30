@@ -103,12 +103,13 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 10;
+    return 50;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row==1) {
+    //如果你需要做成多级回复的话，可以改一下tableview为section 的形式去做
+    if (indexPath.row==1||indexPath.row==3||indexPath.row==4) {
         ZMCusCommentListReplyContentCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ZMCusCommentListReplyContentCell class]) forIndexPath:indexPath];
         [cell configData:nil];
         return cell;
