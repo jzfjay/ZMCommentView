@@ -412,7 +412,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U8B53UG8Q6;
-				GCC_PREFIX_HEADER = /work/ZMCommentView/ZMCommentView/Common/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/ZMCommentView/Common/PrefixHeader.pch";
 				INFOPLIST_FILE = ZMCommentView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -432,7 +432,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U8B53UG8Q6;
-				GCC_PREFIX_HEADER = /work/ZMCommentView/ZMCommentView/Common/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/ZMCommentView/Common/PrefixHeader.pch";
 				INFOPLIST_FILE = ZMCommentView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
