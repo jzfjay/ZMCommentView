@@ -12,10 +12,13 @@
 #import "ZMCusCommentListContentCell.h"
 #import "ZMCusCommentListReplyContentCell.h"
 #import "ZMColorDefine.h"
+
+
 @interface ZMCusCommentListView()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) ZMCusCommentBottomView *bottomView;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) ZMCusCommentListTableHeaderView *headerView;
+@property (nonatomic, assign) BOOL isSelect;
 @end
 
 
@@ -126,7 +129,16 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    
+    //防止重复点击
+    if (!self.isSelect) {
+        self.isSelect = YES;
+        [self performSelector:@selector(repeatDelay) withObject:nil afterDelay:1.0f];
+        if (self.replyBtnBlock) {
+            self.replyBtnBlock();
+        }
+    }
 }
-
+- (void)repeatDelay{
+    self.isSelect = NO;
+}
 @end

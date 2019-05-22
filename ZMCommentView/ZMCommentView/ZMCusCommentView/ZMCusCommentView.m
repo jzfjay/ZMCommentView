@@ -11,6 +11,7 @@
 #import "ZMCusCommentToolView.h"
 #import "UIView+Frame.h"
 #import "AppDelegate.h"
+
 @interface ZMCusCommentView()
 @property (nonatomic, strong) UIControl *maskView;
 @property (nonatomic, strong) ZMCusCommentListView *commentListView;
@@ -18,17 +19,19 @@
 @property (nonatomic, strong) UIControl *topMaskView;
 @property (nonatomic, strong) NSString *historyText;
 @property (nonatomic, assign) CGRect historyFrame;
-@property (nonatomic, assign) BOOL isShowKeyboard;
+@property (nonatomic, assign) BOOL isKeyBoardShow;
 @end
 
 @implementation ZMCusCommentView
-
 - (instancetype)initWithFrame:(CGRect)frame{
     
     if ([super initWithFrame:frame]) {
         self.backgroundColor = RGBHexColor(0x000000, 0.5);
         [self addSubview:self.toolView];
         [self layoutUI];
+        NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+        [center addObserver:self selector:@selector(keyboardDidShow) name:UIKeyboardDidShowNotification object:nil];
+        [center addObserver:self selector:@selector(keyboardDidHide) name:UIKeyboardWillHideNotification object:nil];
         
     }
     return self;
@@ -53,11 +56,17 @@
         };
         _commentListView.tapBtnBlock = ^{
             @strongify(self)
-            if (!self.isShowKeyboard) {
+            if (!self.isKeyBoardShow) {
                 [self showCommentToolView];
             }
      
             
+        };
+        _commentListView.replyBtnBlock = ^{
+            @strongify(self)
+            if (!self.isKeyBoardShow) {
+                [self showCommentToolView];
+            }
         };
         [self addSubview:_commentListView];
     }
@@ -111,12 +120,12 @@
         [self.toolView resetView];
         self.toolView.frame = self.historyFrame;
     }
-    self.isShowKeyboard = YES;
+
 }
 - (void)hideCommentToolView{
     self.topMaskView.hidden = YES;
     self.toolView.hidden = YES;
-    self.isShowKeyboard = NO;
+
     [self.toolView hideTextView];
     [self addSubview:self.toolView];
 }
@@ -132,6 +141,7 @@
     [UIView animateWithDuration:0.2 animations:^{
         self.commentListView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 0);
     } completion:^(BOOL finished) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
         [self removeFromSuperview];
     }];
     
@@ -154,6 +164,16 @@
         
     }
 
+}
+- (void)keyboardDidShow
+{
+    NSLog(@"键盘弹出");
+    self.isKeyBoardShow = YES;
+}
+- (void)keyboardDidHide
+{
+    NSLog(@"键盘隐藏");
+    self.isKeyBoardShow = NO;
 }
 @end
 

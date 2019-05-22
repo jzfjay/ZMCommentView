@@ -15,7 +15,7 @@
 @property (nonatomic, strong) UIImageView *headImageView;
 @property (nonatomic, strong) UIButton *sendBtn;
 @property (nonatomic, assign) CGFloat defaultHeight;
-@property (nonatomic, assign) BOOL isKeyBoardShow;
+
 @end
 
 @implementation ZMCusCommentToolView
@@ -86,7 +86,7 @@
         _textView.placeholder = @"你也来聊两句吧";
         _textView.backgroundColor = [UIColor clearColor];
         _textView.showsVerticalScrollIndicator = NO;
-        [_contentBgView addSubview:self.textView];
+        [_contentBgView addSubview:_textView];
         [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(_headImageView.mas_right).mas_offset(3);
             make.top.mas_equalTo(0);
@@ -94,14 +94,11 @@
             make.height.mas_offset(MIN_TEXTVIEW_HEIGHT);
         }];
     }
-    
-    
-    
+
 }
 - (void)showTextView{
 
     [self.textView becomeFirstResponder];
-    
 }
 - (void)hideTextView{
     [self.textView resignFirstResponder];
@@ -114,7 +111,7 @@
 }
 - (void)resetView{
     
-    [_sendBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+    [self.sendBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(-9);
         make.top.mas_equalTo(7);
         make.width.mas_offset(40);
@@ -128,7 +125,7 @@
     }];
     self.sendBtn.userInteractionEnabled = NO;
     [self.sendBtn setTitleColor:RGBA(204, 204, 204, 1) forState:UIControlStateNormal];
-    
+
 }
 #pragma mark - textviewDelegate
 
@@ -156,7 +153,7 @@
         }];
     }else{
         self.y = 0;
-        [_sendBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+        [self.sendBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(-9);
             make.top.mas_equalTo(7);
             make.width.mas_offset(40);
@@ -182,23 +179,5 @@
         self.changeTextBlock(textView.text,self.frame);
     }
 }
-/*
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    if ([text isEqualToString:@"\n"]){ //判断输入的字是否是回车，即按下return
-        //在这里做你响应return键的代码
-        return NO; //这里返回NO，就代表return键值失效，即页面上按下return，不会出现换行，如果为yes，则输入页面会换行
-    }
-    
-    return YES;
-}
- */
 
-- (void)textViewDidBeginEditing:(UITextView *)textView
-{
-    self.isKeyBoardShow = YES;
-}
-- (void)textViewDidEndEditing:(UITextView *)textView
-{
-    self.isKeyBoardShow = NO;
-}
 @end

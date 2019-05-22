@@ -12,4 +12,6 @@
 @interface ZMCusCommentListView : UIView
 @property (nonatomic, copy) void(^closeBtnBlock)(void);
 @property (nonatomic, copy) void(^tapBtnBlock)(void);
+@property (nonatomic, copy) void(^replyBtnBlock)(void);
 @end
+
